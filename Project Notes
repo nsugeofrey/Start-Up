@@ -6,17 +6,44 @@ Database: MySQL will manage users, property listings, transactions, and other ke
 Payment Integration: Research and integrate with Ugandan mobile money providers (MTN and Airtel) for processing payments.
 Hosting: Deploy the app on platforms like Heroku or AWS, which are beginner-friendly for hosting dynamic web apps.
 
-Step 2: Key Features Breakdown
+Create a simple dashboard using React where landlords and brokers can upload their property details, including images, rent prices, and property descriptions.
+Charge a small fee using mobile money before allowing them to post their listings.
+
+Database Management
+Users table:
+id (primary key)
+username
+password
+role (landlord, broker, consumer)
+
+Properties table:
+id (primary key)
+title
+description
+location
+price
+landlord_id (foreign key referencing the Users table)
+
+Payments table:
+id (primary key)
+amount
+payment_method (Mobile Money)
+transaction_id
+user_id (foreign key referencing the Users table)
+
 User Authentication:
 
 Build a login/registration system for both landlords, brokers, and potential clients.
 Store user roles (e.g., broker vs. landlord) in the database to differentiate functionality.
 Dashboard for Landlords/Brokers:
 
-Create a simple dashboard using React where landlords and brokers can upload their property details, including images, rent prices, and property descriptions.
-Charge a small fee using mobile money before allowing them to post their listings.
-Use MySQL to store and manage property listings and user information.
-Property Listings for Clients:
+Set up Django or Flask to handle API requests for user authentication, property management, and payment verification.
+
+Use MySQL to store property details, user profiles, and transaction data.
+We'll use Python and MySQL to create the backend. We'll need to:
+Create a Python script to interact with the MySQL database
+Implement user authentication and authorization using a library like Flask-Login
+Create API endpoints for creating, reading, updating, and deleting data (CRUD operations)
 
 On the frontend, create a dynamic page that displays all available rental properties.
 Implement search functionality to filter listings by location, price range, and property type (e.g., landlord or broker).
@@ -37,8 +64,6 @@ Use React to build a clean, responsive UI for the landlord/broker dashboard and 
 Implement components for forms, buttons, and search/filter functionality.
 Backend Development:
 
-Set up Django or Flask to handle API requests for user authentication, property management, and payment verification.
-Use MySQL to store property details, user profiles, and transaction data.
 Payment Integration:
 
 Implement APIs provided by MTN Mobile Money and Airtel Money for payment processing.
@@ -47,22 +72,36 @@ Testing:
 
 Test payment functionality in a sandbox environment.
 Test responsiveness on different devices to ensure it works smoothly on both desktops and mobile devices.
-Step 4: Deployment and Scaling
+
+Step 4: 
+Deployment and Scaling
 Deploy the web app on a cloud platform like Heroku, AWS, or DigitalOcean.
 Scale your backend and database as more users begin to use the app.
-Step 5: Real-World Web Apps for Inspiration
-Here are some existing platforms that serve a similar function:
 
-Zillow – Popular in the U.S. for property listings.
-URL: Zillow
-Rentals.com – Focuses on rental properties for tenants.
-URL: Rentals.com
-Jumia House (Uganda) – Online real estate platform in Uganda.
-URL: Jumia House
-Property24 – Real estate platform in Africa.
-URL: Property24
 Additional Considerations:
 User-friendly Design: Make sure the UI is intuitive for landlords, brokers, and potential renters.
 Security: Ensure user data and transactions are secure, and use HTTPS on your web app.
 Mobile Optimization: Since many users will access the app on mobile, make it responsive and mobile-friendly.
 This approach keeps the development process simple while allowing you to scale and improve over time.
+
+To facilitate communication between potential customers and landlords/brokers, we can implement the following features:
+
+Contact Information: 
+Allow landlords and brokers to provide their contact information, such as phone numbers, email addresses, and physical addresses.
+
+In-app Messaging:
+Implement a messaging system within the web-app, allowing potential customers to send messages to landlords and brokers directly. This can be done using a library like Socket.IO or WebSockets.
+
+Email Notifications: 
+Send email notifications to landlords and brokers when a potential customer expresses interest in their property or sends a message.
+
+Phone Number and Email Display:
+Display the landlord's/broker's phone number and email address on the property listing page, allowing potential customers to contact them directly.
+
+Contact Form: 
+Provide a contact form on the property listing page, allowing potential customers to send a message to the landlord/broker with their inquiry.
+To make it even more convenient, we can also implement the following features:
+
+Call-to-Action (CTA) Buttons: 
+Add CTA buttons like "Contact Landlord" or "Send Inquiry" to the property listing page, making it easy for potential customers to initiate contact.
+Integration with Popular Messaging Apps: Integrate the web-app with popular messaging apps like WhatsApp, Facebook Messenger, or Telegram, allowing potential customers to contact landlords and brokers directly from the app.
