@@ -1,3 +1,5 @@
+#you can use sets to test membership names - because sets never takein duplicates values
+
 #function validates userpassword.
 def sign_up():
   #user = input("Enter Username: ")
