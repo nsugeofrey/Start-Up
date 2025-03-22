@@ -12,8 +12,6 @@ function validatePhone($val){
     echo "Enter Valid Number";
   }
 }
-  ?>
-
 
 //this code is regular expression to validate email addresses
 
