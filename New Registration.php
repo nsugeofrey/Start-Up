@@ -430,13 +430,22 @@ if (isset($_GET['token'])) {
     if ($user = $stmt->fetch()) {
         $update = $pdo->prepare("UPDATE users SET is_verified = 1, verify_token = NULL WHERE id = ?");
         $update->execute([$user['id']]);
-        echo "✅ Your email has been verified. You may now log in.";
+
+        // Redirect to login with success message
+        header("Location: login.php?verified=1");
+        exit;
     } else {
-        echo "❌ Invalid or expired token.";
+        // Token invalid or already used
+        header("Location: register.php?verified=0");
+        exit;
     }
 } else {
-    echo "No token provided.";
+    // No token provided
+    header("Location: register.php?verified=0");
+    exit;
 }
+
+
 
 
 //full database table version:
