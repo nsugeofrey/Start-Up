@@ -462,3 +462,53 @@ CREATE TABLE users (
 );
 
 
+//the .htaccess protocol has several advantages below code describes
+
+# ----------------------------------------
+# Enable Rewrite Engine
+# ----------------------------------------
+RewriteEngine On
+
+# ----------------------------------------
+# Force HTTPS
+# ----------------------------------------
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ----------------------------------------
+# Remove .php extension from URLs
+# Example: /about will load /about.php
+# ----------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# ----------------------------------------
+# Disable Directory Listing
+# ----------------------------------------
+Options -Indexes
+
+# ----------------------------------------
+# Block access to sensitive files
+# ----------------------------------------
+<FilesMatch "^(\.env|composer\.json|composer\.lock|\.git)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# ----------------------------------------
+# Security Headers
+# ----------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ----------------------------------------
+# Custom Error Pages
+# ----------------------------------------
+ErrorDocument 404 /errors/404.html
+ErrorDocument 403 /errors/403.html
+
+
