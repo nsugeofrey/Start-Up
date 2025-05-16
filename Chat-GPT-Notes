@@ -1,0 +1,44 @@
+Understanding how the token and email connect to each other during any user Registration.
+-----------------------------------------------------------------------------------------
+Why You Use a Token?
+  
+When a user registers, you don't want to activate their account immediately. Instead:
+    You generate a unique token (you’re using time() — that’s okay but can be improved).
+    You send the user an email with a link like:
+
+  https://yourwebsite.com/verify.php?email=user@example.com&token=1715343211
+
+This token is stored in the database (e.g., in a verification_token column).
+The user must click the link to prove they control the email.
+
+  What Happens When the Link is Clicked?
+In your verify.php script:
+    PHP grabs the email + token from the $_GET request:
+      $email = $_GET['email'];
+      $token = $_GET['token'];
+
+it runs a query to find that user with the matching token.
+If found:
+    It updates the user record to set something like is_verified = 1.
+    It deletes or clears the token field, usually like this:
+      UPDATE users SET is_verified = 1, verification_token = NULL WHERE email = ?;
+
+So Why Does the Token "Disappear"?
+Because the verification_token is being set to NULL or removed once verification is successful.
+This is intentional for security and logic reasons:
+
+| Reason                 | Explanation                                                        |
+| ---------------------- | ------------------------------------------------------------------ |
+| ✅ Prevent reuse        | If token is left, a hacker could reuse the verification URL later. |
+| ✅ Clean database       | You no longer need the token after verification is done.           |
+| ✅ Security hygiene     | Reduces the risk of token leaks or misuse.                         |
+| ✅ Logical state change | You want the user’s account to show as "verified", not "pending".  |
+
+  
+  Summary:
+    You generate and store the token (you use time(), others might use bin2hex(random_bytes(16))).
+    You send it to the user in an email link.
+    When they click the link, you:
+        Find the user with the matching token
+        Mark their account as verified
+        Clear or delete the token ← this is why it "disappears"
