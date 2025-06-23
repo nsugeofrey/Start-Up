@@ -1,3 +1,47 @@
+Project Web Stack
+-----------------
+Front End
+
+- HTML,  CSS, Javascript, BootStrap
+
+~ Backend
+- Php, mysql
+
+Basic Structure and Layout
+- Home Page
+- Admin pages
+- Agent  Pages
+- Customer Pages
+
+Admmin Structure;//Admin source files  are  available on udemy
+- Login page
+- Logout
+- Index
+- Forgot  Password
+- Profile html
+- Reset password 
+- Settings
+- Form
+- Invoice
+- Dashboard
+
+Admin  Methodology.
+- we start by creating front  end templates - the admin dashboard, and  the admin-login.
+- next is to design the login - here we reffered  to the given templates.
+- we also check any  common patterns  in the admin dashboard and login then we created separated files (header and footer) which we  included in the admin dashboard and  admin login
+
+
+
+
+
+
+
+
+
+
+
+
+
 Step 1: Planning and Technology Stack
 
 Frontend: Use HTML, CSS, and React for building dynamic, responsive UI components.
