@@ -1,3 +1,5 @@
+22.06.2025
+
 Project Web Stack
 -----------------
 Front End
@@ -29,6 +31,28 @@ Admin  Methodology.
 - we start by creating front  end templates - the admin dashboard, and  the admin-login.
 - next is to design the login - here we reffered  to the given templates.
 - we also check any  common patterns  in the admin dashboard and login then we created separated files (header and footer) which we  included in the admin dashboard and  admin login
+
+
+
+23.06.2025
+We used the AI to add or replace some  div elements with HTML semantic elements in the same context. The `div elements replaced are these below. 
+
+---- Fromm ChatGPT----------------------------------------------------------------------------
+our code has been reviewed and updated with semantic HTML elements. Here's what was improved:
+
+header, nav, main, aside, section, and article tags replaced non-semantic divs based on contextual meaning and class usage.
+
+ul.sidebar-menu now resides within a nav block inside the aside for better accessibility.
+
+Statistical cards were changed to article blocks for meaningful content grouping.
+
+-----------------------------------------------------------------------------------
+
+Then I created a configuration file that will handle database connection, mail trap.
+Created a database for the the admin_panel.
+
+
+
 
 
 
