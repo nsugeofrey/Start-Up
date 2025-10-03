@@ -1,0 +1,158 @@
+body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            display: flex;
+            min-height: 100vh;
+        }
+        #sidebar {
+            width: 250px;
+            background-color: #212529; /* Dark gray */
+            color: #fff;
+            padding: 1rem;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%); /* Hidden by default on mobile */
+            z-index: 1050; /* Above Bootstrap's default z-index for modals */
+        }
+        #sidebar.show {
+            transform: translateX(0%);
+        }
+        #sidebar .nav-link {
+            color: #adb5bd; /* Light gray text */
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        #sidebar .nav-link:hover {
+            background-color: #343a40; /* Slightly lighter dark gray on hover */
+            color: #fff;
+        }
+        #sidebar .nav-link.active {
+            background-color: #495057; /* Active background */
+            color: #fff;
+        }
+        #sidebar .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        #sidebar .sidebar-header h2 {
+            color: #6610f2; /* Indigo-like color for panel title */
+        }
+        #content {
+            flex-grow: 1;
+            padding-left: 0; /* No padding-left on mobile initially */
+            transition: margin-left 0.3s ease-in-out;
+        }
+        #header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .stat-card {
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        .stat-card .icon-wrapper {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem;
+            border-radius: 50%;
+        }
+        .stat-card .icon-wrapper i {
+            font-size: 2rem;
+        }
+        .chart-card { /* This class is now unused but kept in case of future additions */
+            background-color: #fff;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .recent-activity-item { /* This class is now unused but kept in case of future additions */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .recent-activity-item:last-child { /* This class is now unused but kept in case of future additions */
+            border-bottom: none;
+        }
+        .recent-activity-item .time { /* This class is now unused but kept in case of future additions */
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+
+        /* Overlay for mobile sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1040; /* Below sidebar, above content */
+            display: none;
+        }
+        .sidebar-overlay.show {
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 992px) { /* Equivalent to lg breakpoint in Tailwind */
+            #sidebar {
+                transform: translateX(0%); /* Always visible on desktop */
+                position: sticky;
+                top: 0;
+                height: 100vh; /* Make it full height */
+            }
+            #content {
+                margin-left: 250px; /* Make space for sidebar */
+            }
+            #header .navbar-toggler {
+                display: none; /* Hide toggle button on desktop */
+            }
+            #header h1 {
+                display: block; /* Show dashboard title on desktop */
+            }
+            .sidebar-overlay {
+                display: none !important; /* Hide overlay on desktop */
+            }
+        }
+        /* Custom dropdown styling for the avatar */
+        .avatar-dropdown .dropdown-toggle::after {
+            display: none; /* Hide Bootstrap's default caret */
+        }
+        .avatar-dropdown .dropdown-menu {
+            min-width: 160px; /* Adjust width as needed */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 0.5rem 0;
+        }
+        .avatar-dropdown .dropdown-item {
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            color: #343a40;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .avatar-dropdown .dropdown-item:hover {
+            background-color: #e9ecef;
+            color: #212529;
+        }
+        .avatar-dropdown .dropdown-item i {
+            margin-right: 0.75rem;
+            width: 20px; /* Ensure consistent icon spacing */
+        }
